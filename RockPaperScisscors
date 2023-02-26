@@ -1,0 +1,81 @@
+const getUserChoice = (userInput = 'bomb') => {
+if (
+userInput === 'rock' ||
+userInput === 'paper' ||
+userInput === 'scisscors' ||
+userInput === 'bomb'
+) {
+return userInput;
+} else {
+console.log('Error!');
+}
+};
+
+const getComputerChoice = () => {
+var randomnumber = Math.floor(Math.random() * 3);
+
+switch (randomnumber) {
+case 0:
+return 'rock';
+break;
+case 1:
+return 'paper';
+break;
+case 2:
+return 'scisscors';
+break;
+}
+};
+
+const determineWinner = (userChoice, computerChoice) => {
+if (userChoice === computerChoice) {
+return 'tie';
+}
+
+if (userChoice === 'bomb') {
+if(computerChoice === 'scisscors' || computerChoice === 'paper' || computerChoice === 'rock') {
+return 'You won!'
+}
+}
+
+if (userChoice === 'paper') {
+if (computerChoice === 'scisscors') {
+return 'The computer won!';
+} else {
+return 'You won!';
+}
+}
+
+if (userChoice === 'scisscors') {
+if (computerChoice === 'rock') {
+return 'The computer won!';
+} else {
+return 'You won!';
+}
+}
+
+if (userChoice === 'rock') {
+if (computerChoice === 'paper') {
+return 'The computer won!';
+} else {
+return 'You won!';
+}
+}
+if (userChoice === 'rock') {
+if (computerChoice === 'scisscors') {
+return 'You won!'
+} else {
+return 'The computer won!'
+}
+}
+};
+
+const playGame = () => {
+const choice1 = getUserChoice();
+const choice2 = getComputerChoice();
+console.log('You did ' + choice1);
+console.log('The computer did ' + choice2);
+console.log(determineWinner(choice1, choice2))
+};
+
+playGame();
